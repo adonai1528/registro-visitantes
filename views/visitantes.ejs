@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visitantes Cadastrados</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>Visitantes Cadastrados</h1>
+
+<div class="button-group">
+  <a href="/painel" class="btn">Voltar para o Painel</a>
+  <a href="/cadastro" class="btn">Cadastrar Novo Visitante</a>
+</div>
+
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Data e Hora</th>
+        <th>Apartamento</th>
+        <th>Motivo</th>
+        <th>Tipo</th>
+        <th>Saída</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (visitantes.length === 0) { %>
+        <tr><td colspan="8">Nenhum visitante registrado.</td></tr>
+      <% } else { %>
+        <% visitantes.forEach(visitante => { %>
+          <tr>
+            <td><%= visitante.nome %></td>
+            <td><%= visitante.cpf %></td>
+            <td><%= new Date(visitante.data_hora).toLocaleString('pt-BR') %></td>
+            <td><%= visitante.apartamento %></td>
+            <td><%= visitante.motivo %></td>
+            <td><%= visitante.tipo %></td>
+            <td>
+              <% if (visitante.saida) { %>
+                <%= new Date(visitante.saida).toLocaleString('pt-BR') %>
+              <% } else { %>
+                —
+              <% } %>
+            </td>
+            <td>
+              <% if (!visitante.saida) { %>
+                <form action="/registrar-saida/<%= visitante.id %>" method="POST" onsubmit="return confirm('Registrar saída deste visitante?');">
+                  <button type="submit">Registrar Saída</button>
+                </form>
+              <% } else { %>
+                ✔️ Saída registrada
+              <% } %>
+            </td>
+          </tr>
+        <% }); %>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

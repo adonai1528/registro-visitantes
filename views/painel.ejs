@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel do Porteiro</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark-theme">
+
+  <div class="container">
+    <h1>Painel do Porteiro</h1>
+    <p>Bem-vindo, <strong><%= usuario %></strong>!</p>
+  </div>
+
+  <div class="painel-container">
+    <!-- Menu lateral -->
+    <div class="painel-menu">
+      <a href="/visitantes">👁️ Ver Visitantes</a>
+      <a href="/cadastro">📝 Cadastrar Visitante</a>
+      <a href="/logout">🚪 Sair</a>
+    </div>
+
+    <!-- Área do gráfico com fundo branco -->
+    <div class="painel-grafico">
+      <h2 style="text-align: center;">Fluxo de Visitas por Apartamento</h2>
+      <canvas id="graficoVisitas" width="600" height="300" style="margin: 0 auto; display: block;"></canvas>
+    </div>
+  </div>
+
+  <script src="/scripts.js"></script>
+</body>
+</html>
