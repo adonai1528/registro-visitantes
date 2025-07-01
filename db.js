@@ -1,4 +1,3 @@
-require('dotenv').config();
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
@@ -9,7 +8,10 @@ const connection = mysql.createConnection({
 });
 
 connection.connect((err) => {
-    if (err) throw err;
+    if (err) {
+        console.error('Erro ao conectar no MySQL:', err.message);
+        return;
+    }
     console.log('🟢 Conectado ao banco de dados MySQL!');
 });
 
