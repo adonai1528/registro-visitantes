@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 
-// Exibir as variáveis pra garantir que estão sendo lidas
 console.log('🔧 Configuração do banco:', {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -8,10 +7,10 @@ console.log('🔧 Configuração do banco:', {
 });
 
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'visitantes'
 });
 
 function conectarComRetry(tentativas = 5) {
