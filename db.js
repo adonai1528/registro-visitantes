@@ -7,6 +7,12 @@ function conectarComRetry(tentativas = 5) {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
   });
+  console.log('🔧 Configuração do banco:', {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME
+});
+
 
   function conectar() {
     connection.connect((err) => {
