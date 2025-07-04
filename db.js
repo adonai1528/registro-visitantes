@@ -23,3 +23,4 @@ connection.connect((err) => {
 });
 
 module.exports = connection;
+console.log("🔍 Ambiente: ", process.env);
